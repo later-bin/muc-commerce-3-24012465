@@ -16,7 +16,7 @@
 
 ## 📖 项目简介
 
-本项目为muc东软实训期间的数据分析课程代码仓库，涵盖从数据清洗到用户行为分析的完整实践流程。所有内容基于 Jupyter Notebook 编写，使用 Pandas 进行数据处理与分析。
+本项目为**东软实训（Neusoft Training）**期间的数据分析课程代码仓库，涵盖从数据清洗到用户行为分析的完整实践流程。所有内容基于 Jupyter Notebook 编写，使用 Pandas 进行数据处理与分析。
 
 > 🎯 目标：掌握电商场景下的数据清洗、探索性分析（EDA）与业务洞察产出能力。
 
@@ -40,13 +40,16 @@ muc-commerce-3-24012465/
 │       └── day04_project/                          #  质量报告 & 清洗日志
 │
 ├── 📁 day05/                                       # 第 5 天 · 用户分析专题
-│   ├── 📓 day05_am_teacher_demo.ipynb              #  教师演示
+│   ├── 📓 day05_am_teacher_demo.ipynb              #  上午 · 教师演示
+│   ├── 📓 day05_pm_student_project.ipynb           #  下午 · 学生个人项目
 │   ├── 📁 data/
 │   │   ├── E Commerce Dataset.xlsx
 │   │   ├── ecommerce_customer_cleaned.csv
 │   │   └── 淘宝全品类全国数据.csv
 │   └── 📁 output/day05_analysis/                   #  分析报表
 │       ├── overall_metrics.csv                     #  总体指标
+│       ├── segment_analysis.csv                    #  专题单维分析
+│       ├── cross_analysis.csv                      #  双维交叉分析
 │       ├── tenure_analysis.csv                     #  生命周期分析
 │       ├── complain_analysis.csv                   #  投诉分析
 │       ├── category_analysis.csv                   #  品类分析
@@ -69,7 +72,7 @@ muc-commerce-3-24012465/
 | **Day 02** | — | — | — | 🔜 |
 | **Day 03** | — | — | — | 🔜 |
 | **Day 04** | 🧹 数据清洗 | Pandas 清洗练习 + 拓展 | 电商用户数据清洗项目实战 | ✅ |
-| **Day 05** | 📊 用户行为分析 | 用户画像 & 多维交叉分析 | — | ✅ |
+| **Day 05** | 📊 用户行为分析 | 用户画像 & 多维交叉分析（教师演示） | 个人项目：电商用户多维分析实战 | ✅ |
 | **Day 06+** | 待更新 | — | — | 🔜 |
 
 ---
@@ -97,7 +100,7 @@ muc-commerce-3-24012465/
 
 ## 🔍 Day 05 · 用户行为分析
 
-### 分析框架
+### ☀️ 上午 — 教师演示
 
 | # | 维度 | 核心内容 |
 |:--:|------|----------|
@@ -109,6 +112,23 @@ muc-commerce-3-24012465/
 | 6 | 🔀 交叉透视 | Tenure × Complain 多维分析 |
 | 7 | 📋 报表输出 | CSV 格式，支持 BI 工具 |
 
+### 🌤️ 下午 — 学生个人项目
+
+独立完成电商用户多维分析全流程：
+
+| 任务 | 内容 |
+|:--:|------|
+| 0 | 个人配置与运行环境搭建 |
+| 1 | 读取并验收清洗后数据 |
+| 2 | 计算 10 项公共基础指标 |
+| 3 | 选择专题完成**单维分析**（5 个方向可选） |
+| 4 | 完成**双维度交叉分析** |
+| 5 | 输出 3 个标准 CSV 报表 |
+| 6 | 撰写结论、限制与建议 |
+| ✨ | 拓展任务（选做） |
+
+> 🎯 可选专题方向：A-用户生命周期 / B-投诉与服务 / C-品类与订单 / D-支付与优惠 / E-城市与设备
+
 ### 核心发现
 
 | 指标 | 数值 |
@@ -117,6 +137,7 @@ muc-commerce-3-24012465/
 | 🆕 新用户（0-6 月）流失率 | **25.88%** |
 | 👴 老用户（13-24 月）流失率 | **6.48%** |
 | 📢 投诉用户流失率 | 显著高于未投诉用户 |
+| ⚠️ 投诉新用户流失率 | **56.52%**（46人，最需关注） |
 | 💳 支付方式流失排序 | E-Wallet > Debit Card > Credit Card |
 
 ---
@@ -143,8 +164,11 @@ pip install pandas numpy openpyxl jupyter
 # Day 04 — 数据清洗
 jupyter notebook day04/day04_pm_user_cleaning_project.ipynb
 
-# Day 05 — 用户行为分析
+# Day 05 — 上午 · 教师演示
 jupyter notebook day05/day05_am_teacher_demo.ipynb
+
+# Day 05 — 下午 · 学生个人项目
+jupyter notebook day05/day05_pm_student_project.ipynb
 ```
 
 ---
@@ -155,10 +179,11 @@ jupyter notebook day05/day05_am_teacher_demo.ipynb
 |------|------|
 | 📊 数据来源 | 电商平台用户行为横截面快照 |
 | 👥 样本量 | 5,630 名独立用户 |
-| 🚫 缺失字段 | 无订单金额 → 无法计算 GMV / 客单价 |
-| 🚫 缺失字段 | 无时间戳 → 无法做时序趋势 |
+| 🚫 无订单金额 | 无法计算 GMV / 客单价 |
+| 🚫 无订单日期 | 无法做时序趋势分析 |
 | ⚠️ 注意 | `CashbackAmount` = 返现金额 ≠ 消费金额 |
 | ⚠️ 注意 | 分析结果为**关联关系**，非因果关系 |
+| ⚠️ 注意 | 横截面数据存在**幸存者偏差**风险 |
 
 ---
 
