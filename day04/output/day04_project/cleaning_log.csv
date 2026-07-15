@@ -1,0 +1,13 @@
+﻿步骤,详情,影响数量
+删除完全重复行,无重复数据,0
+缺失值填补,列 'Tenure' 使用中位数填补,264
+缺失值填补,列 'WarehouseToHome' 使用中位数填补,251
+缺失值填补,列 'HourSpendOnApp' 使用中位数填补,255
+缺失值填补,列 'OrderAmountHikeFromlastYear' 使用中位数填补,265
+缺失值填补,列 'CouponUsed' 使用中位数填补,256
+缺失值填补,列 'OrderCount' 使用中位数填补,258
+缺失值填补,列 'DaySinceLastOrder' 使用中位数填补,307
+类别标准化,列 PreferredLoginDevice: 'Phone' -> 'Mobile Phone',1231
+类别标准化,列 PreferredPaymentMode: 'COD' -> 'Cash on Delivery',365
+类别标准化,列 PreferredPaymentMode: 'CC' -> 'Credit Card',273
+类别标准化,列 PreferedOrderCat: 'Mobile' -> 'Mobile Phone',809
