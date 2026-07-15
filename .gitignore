@@ -1,0 +1,19 @@
+# IDE
+.vs/
+.vscode/
+
+# Claude
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Jupyter
+.jupyter/
+
+# OS
+.DS_Store
+Thumbs.db
