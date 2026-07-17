@@ -2,7 +2,7 @@
 
 <p align="center">
   <b>MUC 电商数据分析课程 · 课堂练习 & 课后作业</b><br>
-  <sub>学号：24012465 · GitHub：later-bin · 姓名：舍滨 · 专题：A（用户生命周期）</sub>
+  <sub>学号：24012465 · GitHub：later-bin · 姓名：舍滨 </sub>
 </p>
 
 ---
