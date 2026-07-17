@@ -1,11 +1,3 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Neusoft-实训项目-0078D4?style=for-the-badge&logo=educative&logoColor=white" alt="Neusoft">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Pandas-数据处理-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
-  <img src="https://img.shields.io/badge/Matplotlib-可视化-11557C?style=for-the-badge&logo=python&logoColor=white" alt="Matplotlib">
-  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
-</p>
-
 <h1 align="center">🧑‍💻 东软实训 — 数据分析与电商实践</h1>
 
 <p align="center">
@@ -17,7 +9,7 @@
 
 ## 📖 项目简介
 
-本项目为**东软实训（Neusoft Training）**期间的数据分析课程代码仓库，涵盖从数据清洗到可视化呈现的完整实践流程。所有内容基于 Jupyter Notebook 编写，使用 Pandas、Matplotlib 进行数据处理、分析与可视化。
+本项目为muc东软实训（Neusoft Training）期间的数据分析课程代码仓库，涵盖从数据清洗到可视化呈现的完整实践流程。所有内容基于 Jupyter Notebook 编写，使用 Pandas、Matplotlib 进行数据处理、分析与可视化。
 
 > 🎯 目标：掌握电商场景下的数据清洗、探索性分析（EDA）、用户行为分析与数据可视化能力。
 
