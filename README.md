@@ -70,6 +70,29 @@ muc-commerce-3-24012465/
 │       ├── day06_visualization_summary.png             #  2×2 综合仪表盘
 │       └── chart_manifest.csv                          #  图表清单
 │
+├── 📁 day07/                                          # 第 7 天 · Flask Web 系统
+│   ├── 🐍 app.py                                       #  Flask 主应用
+│   ├── 📓 README.md                                    #  Day07 说明文档
+│   ├── 📄 requirements.txt                             #  Python 依赖
+│   ├── 📁 data/                                        #  分析数据
+│   ├── 📁 services/                                    #  业务逻辑层
+│   │   ├── data_service.py                             #  数据加载与筛选
+│   │   ├── qa_service.py                               #  离线规则问答
+│   │   └── llm_service.py                              #  大模型集成（可选）
+│   ├── 📁 static/                                      #  静态资源
+│   │   ├── css/style.css
+│   │   ├── js/assistant.js                             #  前端问答交互
+│   │   └── images/                                     #  图表图片
+│   ├── 📁 templates/                                   #  Jinja2 模板
+│   │   ├── base.html                                   #  布局基模板
+│   │   ├── login.html                                  #  登录页
+│   │   ├── dashboard.html                              #  数据看板
+│   │   ├── segments.html                               #  生命周期详情
+│   │   ├── assistant.html                              #  智能问答
+│   │   ├── admin.html                                  #  教师管理
+│   │   └── 404.html                                    #  错误页
+│   └── 📁 screenshots/                                 #  验收截图
+│
 ├── 📄 .gitignore
 └── 📄 README.md
 ```
@@ -84,7 +107,7 @@ muc-commerce-3-24012465/
 | **Day 04** | 🧹 数据清洗 | Pandas 清洗练习 + 拓展 | 电商用户数据清洗项目实战 | ✅ |
 | **Day 05** | 📊 用户行为分析 | 用户画像 & 多维交叉分析（教师演示） | 个人项目：电商用户多维分析实战 | ✅ |
 | **Day 06** | 📈 数据可视化 | Matplotlib 基础与图表表达（教师演示） | 个人项目：4图+综合图+图表清单 | ✅ |
-| **Day 07** | 🌐 Flask Web | Flask 基础与可视化展示 | — | 🔜 |
+| **Day 07** | 🌐 Flask Web | Flask 基础 + 登录认证 + 看板 + 问答 | Web 数据分析系统实战 | ✅ |
 
 ---
 
@@ -198,7 +221,52 @@ muc-commerce-3-24012465/
 
 ---
 
-## 🚀 快速开始
+## 🔍 Day 07 · Flask Web 数据分析系统
+
+### 项目概述
+
+基于 Flask 框架，将 Day03—Day06 的分析成果整合为一个完整的 Web 数据分析系统。
+
+### 已完成功能
+
+| # | 功能 | 说明 |
+|:--:|------|------|
+| 1 | 🔐 登录认证 | Session + 装饰器，支持学生/教师双角色 |
+| 2 | 📊 数据看板 | 4张指标卡 + 品类筛选 + 图表 + 数据表格 |
+| 3 | 📈 动态图表 | `/chart/category_bar` 支持品类高亮 |
+| 4 | 🔍 品类筛选 | 下拉框筛选偏好品类，自动刷新看板 |
+| 5 | 🤖 智能问答 | 5类离线规则问答 + 可选大模型集成 |
+| 6 | 🧩 生命周期详情 | `/segments` 展示各阶段指标 |
+| 7 | 🛡️ 角色权限 | 学生/教师双角色，教师专属 `/admin` 页面 |
+
+### 拓展任务
+
+| 拓展 | 内容 | 状态 |
+|:---:|------|:---:|
+| B | **生命周期详情页** — `/segments` 页面 | ✅ |
+| 挑战A | 接入真实大模型（DeepSeek等 OpenAI 兼容接口） | ✅ |
+| 挑战B | 动态图表带品类高亮筛选 | ✅ |
+| 挑战C | 用户角色与权限（student/teacher） | ✅ |
+
+### 运行方法
+
+```bash
+cd day07
+pip install -r requirements.txt
+python app.py
+# 浏览器访问 http://127.0.0.1:5000
+# 学生账号：student / day07
+# 教师账号：teacher / day07_teacher
+```
+
+### 登录账号
+
+| 角色 | 用户名 | 密码 |
+|------|--------|------|
+| 学生 | `student` | `day07` |
+| 教师 | `teacher` | `day07_teacher` |
+
+---
 
 ### 环境配置
 

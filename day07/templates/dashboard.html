@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}数据看板 | 电商用户分析系统{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">WELCOME, {{ username }} <span class="role-badge {{ role }}">{{ role_label }}</span></p>
+    <h1>电商用户行为数据看板</h1>
+    <p class="lead">数据来自第5天统计分析，图表来自第6天可视化成果。</p>
+  </div>
+  <a class="button secondary" href="{{ url_for('assistant') }}">进入智能问答</a>
+</section>
+
+<section class="metric-grid">
+  {% for metric in metrics %}
+  <article class="metric-card">
+    <span>{{ metric.label }}</span>
+    <strong>{{ metric.value }}</strong>
+    <small>{{ metric.note }}</small>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="panel">
+  <div class="panel-heading">
+    <div><p class="eyebrow">INTERACTION</p><h2>按偏好品类筛选</h2></div>
+    <form method="get">
+      <select name="category" onchange="this.form.submit()">
+        {% for category in categories %}
+        <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>偏好品类</th><th>用户数</th><th>流失率</th><th>平均订单数</th></tr></thead>
+      <tbody>
+        {% for row in category_rows %}
+        <tr><td>{{ row['偏好品类'] }}</td><td>{{ row['用户数'] }}</td><td>{{ row['流失率'] }}</td><td>{{ row['平均订单数'] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="chart-grid">
+  <article class="panel"><h2>{% if selected_category != '全部' %}不同偏好品类用户比较（已筛选：{{ selected_category }}）{% else %}不同偏好品类用户比较{% endif %}</h2><img src="{{ url_for('chart_category_bar', category=selected_category) }}" alt="品类用户比较柱状图（动态生成）"></article>
+  <article class="panel"><h2>不同生命周期阶段订单趋势</h2><img src="{{ url_for('static', filename='images/03_ordered_line.png') }}" alt="各生命周期阶段平均订单数折线图"></article>
+</section>
+
+<aside class="insight"><strong>数据观察：</strong>{{ insight }}</aside>
+
+{% if role == 'teacher' %}
+<!-- 教师调试面板 -->
+<section class="panel debug-panel">
+  <div class="panel-heading"><h2>🔧 教师调试面板</h2><span class="role-badge teacher">仅教师可见</span></div>
+  <p class="lead">以下为当前筛选条件下的原始数据，用于教学演示和调试。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>偏好品类</th><th>用户数</th><th>流失率</th><th>平均订单数</th></tr></thead>
+      <tbody>
+        {% for row in category_rows %}
+        <tr><td>{{ row['偏好品类'] }}</td><td>{{ row['用户数'] }}</td><td>{{ row['流失率'] }}</td><td>{{ row['平均订单数'] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:12px;color:var(--muted);font-size:14px;">当前筛选：<strong>{{ selected_category }}</strong> | 显示行数：<strong>{{ category_rows|length }}</strong> | 图表来源：<strong>动态生成 (/chart/category_bar)</strong></p>
+</section>
+{% endif %}
+{% endblock %}

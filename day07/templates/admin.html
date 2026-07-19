@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}数据管理 | 电商用户分析系统{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">ADMIN · 教师专属</p>
+    <h1>完整数据概览</h1>
+    <p class="lead">此页面仅教师账号可访问，展示全部原始统计数据，供教学演示与数据核查使用。</p>
+  </div>
+  <a class="button secondary" href="{{ url_for('dashboard') }}">返回数据看板</a>
+</section>
+
+<section class="panel">
+  <h2>总体指标（overall_metrics.csv）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        {% for row in raw_metrics %}
+        <tr><td>{{ row['指标'] }}</td><td>{{ row['数值'] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>品类分析（category_analysis.csv）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>偏好品类</th><th>用户数</th><th>流失率</th><th>平均订单数</th><th>平均优惠券数</th><th>平均返现</th><th>用户占比</th></tr></thead>
+      <tbody>
+        {% for row in raw_categories %}
+        <tr><td>{{ row['PreferedOrderCat'] }}</td><td>{{ row['用户数'] }}</td><td>{{ row['流失率'] }}</td><td>{{ row['平均订单数'] }}</td><td>{{ row['平均优惠券数'] }}</td><td>{{ row['平均返现'] }}</td><td>{{ row['用户占比'] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>生命周期阶段（segment_analysis.csv）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>阶段</th><th>用户数</th><th>流失人数</th><th>流失率</th><th>平均订单数</th><th>平均返现</th><th>平均距上次下单天数</th></tr></thead>
+      <tbody>
+        {% for row in raw_segments %}
+        <tr><td>{{ row['TenureGroup'] }}</td><td>{{ row['用户数'] }}</td><td>{{ row['流失人数'] }}</td><td>{{ row['流失率'] }}</td><td>{{ row['平均订单数'] }}</td><td>{{ row['平均返现'] }}</td><td>{{ row['平均距上次下单天数'] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

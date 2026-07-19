@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}生命周期分析 | 电商用户分析系统{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">LIFECYCLE ANALYSIS</p>
+    <h1>用户生命周期阶段分析</h1>
+    <p class="lead">数据来自第5天统计分析，展示各生命周期阶段的用户分布与流失情况。</p>
+  </div>
+  <a class="button secondary" href="{{ url_for('dashboard') }}">返回数据看板</a>
+</section>
+
+<section class="panel">
+  <h2>各阶段关键指标</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>生命周期阶段</th>
+          <th>用户数</th>
+          <th>流失人数</th>
+          <th>流失率</th>
+          <th>平均订单数</th>
+          <th>平均返现</th>
+          <th>平均距上次下单天数</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in seg_data %}
+        <tr>
+          <td><strong>{{ row['stage'] }}</strong></td>
+          <td>{{ row['users'] }}</td>
+          <td>{{ row['churn_users'] }}</td>
+          <td>{{ row['churn_rate'] }}</td>
+          <td>{{ row['avg_orders'] }}</td>
+          <td>{{ row['avg_cashback'] }}</td>
+          <td>{{ row['avg_days_since_last'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<aside class="insight"><strong>数据观察：</strong>{{ seg_insight }}</aside>
+{% endblock %}
