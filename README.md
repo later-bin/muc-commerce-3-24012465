@@ -1,320 +1,275 @@
-<h1 align="center">🧑‍💻 东软实训 — 数据分析与电商实践</h1>
+<h1 align="center">东软实训 — 数据分析与电商实践</h1>
 
 <p align="center">
-  <b>MUC 电商数据分析课程 · 课堂练习 & 课后作业</b><br>
-  <sub>学号：24012465 · GitHub：later-bin · 姓名：舍滨 </sub>
+  <b>MUC 电商数据分析课程 · 学生个人项目仓库</b><br>
+  <sub>学号：24012465 · GitHub：<a href="https://github.com/later-bin">later-bin</a> · 姓名：舍滨</sub>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/Pandas-数据处理-150458?style=flat-square&logo=pandas&logoColor=white">
+  <img src="https://img.shields.io/badge/Matplotlib-可视化-11557C?style=flat-square&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/Flask-Web-000000?style=flat-square&logo=flask&logoColor=white">
+  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white">
 </p>
 
 ---
 
-## 📖 项目简介
+## 项目简介
 
-本项目为muc东软实训（Neusoft Training）期间的数据分析课程代码仓库，涵盖从数据清洗到可视化呈现的完整实践流程。所有内容基于 Jupyter Notebook 编写，使用 Pandas、Matplotlib 进行数据处理、分析与可视化。
+本项目为**东软实训（Neusoft Training）**数据分析课程的学生个人项目仓库，覆盖从 Pandas 数据分析、数据清洗、用户行为分析、数据可视化到 Flask Web 系统开发的完整学习路径。共 6 天课程实践（Day03—Day08）。
 
-> 🎯 目标：掌握电商场景下的数据清洗、探索性分析（EDA）、用户行为分析与数据可视化能力。
+> 目标：掌握电商场景下「数据读取 → 清洗 → 分析 → 可视化 → Web 部署」的全链路能力。
 
 ---
 
-## 🗂️ 项目结构
+## 项目结构
 
 ```
 muc-commerce-3-24012465/
 │
-├── 📁 day03/                                          # 第 3 天 · Pandas 数据分析
-│   ├── 📓 day03_pandas_product_analysis.ipynb          #  淘宝商品数据探索
-│   ├── 📁 data/
-│   │   └── 淘宝全品类全国数据.csv                       #  25,000条商品记录
-│   └── 📁 output/day03_analysis/                       #  分析输出
-│       ├── category_summary.csv                        #  品类汇总
-│       └── province_summary.csv                        #  省份对比
+├── day03/                    Pandas 数据分析（淘宝商品）
+│   ├── day03_...ipynb         Notebook
+│   ├── data/                  原始数据（25,000 条商品）
+│   └── output/                category_summary + province_summary
 │
-├── 📁 day04/                                          # 第 4 天 · 数据清洗专题
-│   ├── 📓 day04_am_main_exercise.ipynb                #  上午 · 主练习
-│   ├── 📓 day04_am_extension_exercise.ipynb           #  上午 · 拓展练习
-│   ├── 📓 day04_pm_user_cleaning_project.ipynb        #  下午 · 项目实战
-│   ├── 📓 pandas清洗数据.ipynb                         #  Pandas 清洗基础
-│   ├── 📁 data/
-│   │   ├── E Commerce Dataset.xlsx
-│   │   └── 淘宝全品类全国数据.csv
-│   └── 📁 output/
-│       ├── ecommerce_customer_cleaned.csv              #  清洗结果
-│       └── day04_project/                              #  质量报告 & 清洗日志
-│           ├── cleaning_log.csv
-│           ├── data_quality_before.csv
-│           └── data_quality_after.csv
+├── day04/                    数据清洗（电商用户）
+│   ├── day04_...ipynb         项目 Notebook
+│   ├── day04_am_...ipynb      上午练习 Notebook ×2
+│   ├── pandas清洗数据.ipynb    Pandas 清洗基础
+│   ├── data/                  原始数据（Excel + CSV）
+│   └── output/                清洗结果 + 质量报告
 │
-├── 📁 day05/                                          # 第 5 天 · 用户分析专题
-│   ├── 📓 day05_pm_student_project.ipynb               #  下午 · 学生个人项目
-│   ├── 📁 data/
-│   │   ├── E Commerce Dataset.xlsx
-│   │   ├── ecommerce_customer_cleaned.csv
-│   │   └── 淘宝全品类全国数据.csv
-│   └── 📁 output/day05_analysis/                      #  分析报表
-│       ├── overall_metrics.csv                         #  总体指标
-│       ├── segment_analysis.csv                        #  专题单维分析
-│       ├── cross_analysis.csv                          #  双维交叉分析
-│       ├── tenure_analysis.csv                         #  生命周期分析（教师演示）
-│       ├── complain_analysis.csv                       #  投诉分析（教师演示）
-│       ├── category_analysis.csv                       #  品类分析（教师演示）
-│       ├── payment_analysis.csv                        #  支付方式分析（教师演示）
-│       ├── tenure_complain_analysis.csv                #  交叉分析（教师演示）
-│       └── tenure_complain_pivot.csv                   #  透视表（教师演示）
+├── day05/                    用户行为多维分析
+│   ├── day05_...ipynb         学生项目 Notebook（专题 A：用户生命周期）
+│   ├── data/                  清洗后数据
+│   └── output/day05_analysis/ 9 份分析报表 CSV
 │
-├── 📁 day06/                                          # 第 6 天 · 数据可视化专题
-│   ├── 📓 day06_pm_student_visualization.ipynb         #  下午 · 学生可视化项目
-│   └── 📁 output/day06_visualization/                 #  可视化成果
-│       ├── 01_category_bar.png                         #  支付方式柱状图
-│       ├── 02_behavior_scatter.png                     #  订单-返现散点图
-│       ├── 03_ordered_line.png                         #  生命周期折线图
-│       ├── 04_composition_chart.png                    #  城市等级环形图
-│       ├── day06_visualization_summary.png             #  2×2 综合仪表盘
-│       └── chart_manifest.csv                          #  图表清单
+├── day06/                    数据可视化
+│   ├── day06_...ipynb         学生项目 Notebook
+│   └── output/                5 张 PNG 图表 + 图表清单 CSV
 │
-├── 📁 day07/                                          # 第 7 天 · Flask Web 系统
-│   ├── 🐍 app.py                                       #  Flask 主应用
-│   ├── 📓 README.md                                    #  Day07 说明文档
-│   ├── 📄 requirements.txt                             #  Python 依赖
-│   ├── 📁 data/                                        #  分析数据
-│   ├── 📁 services/                                    #  业务逻辑层
-│   │   ├── data_service.py                             #  数据加载与筛选
-│   │   ├── qa_service.py                               #  离线规则问答
-│   │   └── llm_service.py                              #  大模型集成（可选）
-│   ├── 📁 static/                                      #  静态资源
-│   │   ├── css/style.css
-│   │   ├── js/assistant.js                             #  前端问答交互
-│   │   └── images/                                     #  图表图片
-│   ├── 📁 templates/                                   #  Jinja2 模板
-│   │   ├── base.html                                   #  布局基模板
-│   │   ├── login.html                                  #  登录页
-│   │   ├── dashboard.html                              #  数据看板
-│   │   ├── segments.html                               #  生命周期详情
-│   │   ├── assistant.html                              #  智能问答
-│   │   ├── admin.html                                  #  教师管理
-│   │   └── 404.html                                    #  错误页
-│   └── 📁 screenshots/                                 #  验收截图
+├── day07/                    Flask Web 系统 v1
+│   ├── app.py                 Flask 主应用（端口 5000）
+│   ├── services/              业务逻辑（含 LLM 集成）
+│   ├── templates/             7 个 HTML 模板（含 admin/segments）
+│   ├── static/                CSS + JS + 图片
+│   └── data/                  3 个分析 CSV
 │
-├── 📄 .gitignore
-└── 📄 README.md
+├── day08/                    Flask 项目升级 v2
+│   ├── app.py                 Flask 主应用（端口 5500）
+│   ├── services/              业务逻辑（API 导向）
+│   ├── templates/             6 个 HTML 模板
+│   ├── static/                CSS + JS + 图片
+│   ├── tests/                 Flask API 测试（6 条用例）
+│   ├── validate_day08_*.py    环境检查 & 提交检查脚本
+│   └── data/                  3 个分析 CSV
+│
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-## 📅 课程进度
+## 课程进度总览
 
-| 天数 | 主题 | 上午 | 下午 | 状态 |
+| 天数 | 主题 | 技术栈 | 核心产出 | 状态 |
 |:---:|------|------|------|:---:|
-| **Day 03** | 🐼 Pandas 基础 | — | 淘宝商品数据探索分析 | ✅ |
-| **Day 04** | 🧹 数据清洗 | Pandas 清洗练习 + 拓展 | 电商用户数据清洗项目实战 | ✅ |
-| **Day 05** | 📊 用户行为分析 | 用户画像 & 多维交叉分析（教师演示） | 个人项目：电商用户多维分析实战 | ✅ |
-| **Day 06** | 📈 数据可视化 | Matplotlib 基础与图表表达（教师演示） | 个人项目：4图+综合图+图表清单 | ✅ |
-| **Day 07** | 🌐 Flask Web | Flask 基础 + 登录认证 + 看板 + 问答 | Web 数据分析系统实战 | ✅ |
+| Day03 | Pandas 数据分析 | Pandas, NumPy | 25K 商品分组聚合 + 省份对比 | ✅ |
+| Day04 | 数据清洗 | Pandas, NumPy | 5,630 用户清洗 + 质量报告 | ✅ |
+| Day05 | 用户行为分析 | Pandas, NumPy | 单维 + 双维分析，3 份报表 | ✅ |
+| Day06 | 数据可视化 | Matplotlib, Pandas | 4 独立图 + 综合图 + 图表清单 | ✅ |
+| Day07 | Flask Web v1 | Flask, Jinja2 | 登录/Auth/看板/问答/图表/权限 | ✅ |
+| Day08 | Flask 升级 v2 | Flask, pytest | REST API + 测试 + 错误处理 | ✅ |
 
 ---
 
-## 🔍 Day 03 · Pandas 数据分析
+## 各天详细说明
 
-### 学习目标
+### Day03 · Pandas 数据分析
 
-- ✅ 使用 Pandas 读取 CSV 数据（25,000 条商品记录）
-- ✅ 字段类型检查与缺失值分析
-- ✅ 列选择（`df["col"]`）与行选择（`loc` / `iloc`）
-- ✅ 条件筛选与多条件组合（`&` `|` `isin`）
-- ✅ `groupby` + `agg` 分组聚合统计
-- ✅ 省份级对比分析（广东 vs 江苏）
+**数据**：淘宝全品类商品抽样数据（25,000 条 × 15 字段）。
 
-### 数据说明
+**技能点**：
+- CSV 读取与字段类型检查
+- 缺失值检测与分析（态度 91.9%、质量 91.1% 缺失）
+- `loc` / `iloc` 行列选择、条件筛选（`&` `|` `isin`）
+- `groupby` + `agg` 分组聚合
+- 省份级对比（广东 vs 江苏）
 
-| 属性 | 说明 |
-|------|------|
-| 📊 数据来源 | 淘宝全品类商品抽样数据 |
-| 📦 样本量 | 25,000 条商品记录 |
-| 🏷️ 品类数 | 15 个一级品类、71 个二级品类 |
-| 🗺️ 省份数 | 34 个省级行政区 |
-| 💰 价格范围 | ¥11.26 ~ ¥5,998.78（均值 ¥938.26） |
-| ⚠️ 注意 | `商品价格`为标价非成交价；`商品销量`为文本格式（如"100+人付款"） |
-
-### 核心发现
-
-| 指标 | 数值 |
-|------|:----:|
-| 📊 商品总数 | **25,000** 条 |
-| 💰 平均标价 | **¥938.26** |
-| 📈 价格中位数 | **¥617.37** |
-| 🏆 均价最高品类 | 约 ¥3,086 |
-| 🥇 商品最多省份 | 广东（2,303条） |
-| 📉 缺失较严重字段 | 态度(91.9%)、质量(91.1%)、退货率(89.1%) |
-
----
-
-## 🔍 Day 04 · 数据清洗
-
-### 学习目标
-
-- ✅ 缺失值检测与处理策略（删除 / 填充）
-- ✅ 重复行识别与去重
-- ✅ 数据类型转换与规范化
-- ✅ 异常值检测（IQR / Z-Score）
-- ✅ 数据质量评估报告生成
-
-### 项目产出
-
-| 输出文件 | 说明 |
-|----------|------|
-| `ecommerce_customer_cleaned.csv` | 清洗后的数据集（5,630 条记录） |
-| `cleaning_log.csv` | 清洗操作日志（步骤 & 影响行数） |
-| `data_quality_before.csv` | 清洗前质量快照 |
-| `data_quality_after.csv` | 清洗后质量快照 |
-
----
-
-## 🔍 Day 05 · 用户行为分析
-
-### 🌤️ 下午 — 学生个人项目（专题A：用户生命周期）
-
-独立完成电商用户多维分析全流程：
-
-| 任务 | 内容 |
-|:--:|------|
-| 0 | 个人配置与运行环境搭建 |
-| 1 | 读取并验收清洗后数据 |
-| 2 | 计算 10 项公共基础指标 |
-| 3 | 选择专题完成**单维分析**（TenureGroup） |
-| 4 | 完成**双维度交叉分析**（TenureGroup × Complain） |
-| 5 | 输出 3 个标准 CSV 报表 |
-| 6 | 撰写结论、限制与建议 |
-| ✨ | 拓展任务（订单活跃度分层 + 反直觉结果核查） |
-
-### 核心发现
-
-| 指标 | 数值 |
-|------|:----:|
-| 📉 总体流失率 | **16.84%**（948/5,630人） |
-| 🆕 新用户流失率 | **53.5%**（272/508人） |
-| 👴 老用户（13-24月）流失率 | **6.5%**（95/1,467人） |
-| 📢 投诉用户流失率 | 显著高于未投诉用户 |
-| ⚠️ 投诉新用户流失率 | **56.5%**（有投诉且新用户，最需关注） |
-| 📊 流失趋势 | 随生命周期阶段严格单调递减 |
-
----
-
-## 🔍 Day 06 · 数据可视化
-
-### 🌤️ 下午 — 学生可视化项目
-
-完成 4 张独立图表 + 1 张综合图 + 图表清单：
-
-| 图表 | 类型 | 业务问题 | 核心发现 |
-|:---:|:---:|------|------|
-| 01 | 柱状图 | 支付方式与流失率差异 | E wallet流失率最高(21.2%), UPI最低(13.8%) |
-| 02 | 散点图 | 订单数与返现金额关系 | 流失用户集中在低订单数(≤3)区域 |
-| 03 | 折线图 | 生命周期阶段流失趋势 | 流失率53.5%→0.0%严格单调递减 |
-| 04 | 环形图 | 城市等级用户构成 | 一线城市占65.1%，二线仅4.3% |
-| 05 | 综合图 | 4图概览仪表盘 | 整体呈现用户流失的行为画像 |
-
-### 图表规范
-
-- ✅ 每张图含"观察—证据—边界"三段式结论
-- ✅ 比率图标注样本量（n=XXX）
-- ✅ 折线图不虚构时间趋势（标注"有序阶段比较"）
-- ✅ 散点图含透明度与颜色图例
-- ✅ 综合图为重新绘制，非PNG截图拼接
-
----
-
-## 🔍 Day 07 · Flask Web 数据分析系统
-
-### 项目概述
-
-基于 Flask 框架，将 Day03—Day06 的分析成果整合为一个完整的 Web 数据分析系统。
-
-### 已完成功能
-
-| # | 功能 | 说明 |
-|:--:|------|------|
-| 1 | 🔐 登录认证 | Session + 装饰器，支持学生/教师双角色 |
-| 2 | 📊 数据看板 | 4张指标卡 + 品类筛选 + 图表 + 数据表格 |
-| 3 | 📈 动态图表 | `/chart/category_bar` 支持品类高亮 |
-| 4 | 🔍 品类筛选 | 下拉框筛选偏好品类，自动刷新看板 |
-| 5 | 🤖 智能问答 | 5类离线规则问答 + 可选大模型集成 |
-| 6 | 🧩 生命周期详情 | `/segments` 展示各阶段指标 |
-| 7 | 🛡️ 角色权限 | 学生/教师双角色，教师专属 `/admin` 页面 |
-
-### 拓展任务
-
-| 拓展 | 内容 | 状态 |
-|:---:|------|:---:|
-| B | **生命周期详情页** — `/segments` 页面 | ✅ |
-| 挑战A | 接入真实大模型（DeepSeek等 OpenAI 兼容接口） | ✅ |
-| 挑战B | 动态图表带品类高亮筛选 | ✅ |
-| 挑战C | 用户角色与权限（student/teacher） | ✅ |
-
-### 运行方法
+**输出**：`category_summary.csv`（15 品类）+ `province_summary.csv`（省份对比）
 
 ```bash
-cd day07
-pip install -r requirements.txt
-python app.py
-# 浏览器访问 http://127.0.0.1:5000
-# 学生账号：student / day07
-# 教师账号：teacher / day07_teacher
-```
-
-### 登录账号
-
-| 角色 | 用户名 | 密码 |
-|------|--------|------|
-| 学生 | `student` | `day07` |
-| 教师 | `teacher` | `day07_teacher` |
-
----
-
-### 环境配置
-
-```bash
-# 创建虚拟环境（推荐）
-python -m venv .venv
-
-# 激活环境
-source .venv/bin/activate   # Linux / macOS
-.venv\Scripts\activate      # Windows
-
-# 安装依赖
-pip install pandas numpy matplotlib openpyxl jupyter
-```
-
-### 运行 Notebook
-
-```bash
-# Day 03 — Pandas 数据分析
 jupyter notebook day03/day03_pandas_product_analysis.ipynb
+```
 
-# Day 04 — 数据清洗
+---
+
+### Day04 · 数据清洗
+
+**数据**：电商用户原始 Excel 数据集（5,630 条 × 20 字段）。
+
+**技能点**：
+- 缺失值检测与处理策略
+- 重复行识别与去重
+- 数据类型转换与规范化
+- 异常值检测（IQR / Z-Score）
+- 数据质量评估报告生成
+
+**输出**：清洗后 CSV + `data_quality_before/after.csv` + `cleaning_log.csv`
+
+```bash
 jupyter notebook day04/day04_pm_user_cleaning_project.ipynb
+```
 
-# Day 05 — 学生个人项目（用户多维分析）
+---
+
+### Day05 · 用户行为多维分析
+
+**专题方向**：A — 用户生命周期（TenureGroup）
+
+**技能点**：
+- 10 项公共基础指标计算
+- 单维专题分析（按 TenureGroup 分组）
+- 双维交叉分析（TenureGroup × Complain）
+- 样本提示（< 30 标记为小样本）
+- 结论/限制/建议三段式
+
+**输出**：`overall_metrics.csv` + `segment_analysis.csv` + `cross_analysis.csv`
+
+| 指标 | 数值 |
+|------|:----:|
+| 总体流失率 | **16.84%**（948 / 5,630） |
+| 新用户流失率 | **53.5%** |
+| 24 月+ 流失率 | **0.0%** |
+| 投诉新用户流失率 | **56.5%** |
+
+```bash
 jupyter notebook day05/day05_pm_student_project.ipynb
+```
 
-# Day 06 — 学生可视化项目
+---
+
+### Day06 · 数据可视化
+
+**技能点**：
+- 柱状图（类别比较） / 散点图（行为分布） / 折线图（有序阶段） / 环形图（构成）
+- 每张图含「观察—证据—边界」三段结论
+- 比率图标注样本量（n=XXX）
+- 2×2 综合仪表盘
+
+**输出**：5 张 PNG + `chart_manifest.csv`
+
+| 图 | 类型 | 核心发现 |
+|:--:|:---:|------|
+| 01 | 柱状图 | E wallet 流失率最高（21.2%），UPI 最低（13.8%） |
+| 02 | 散点图 | 流失用户集中在 OrderCount ≤ 3 区域 |
+| 03 | 折线图 | 流失率 53.5% → 0.0% 严格单调递减 |
+| 04 | 环形图 | 一线城市用户占 65.1%，二线仅 4.3% |
+| 05 | 综合图 | 4 图概览仪表盘 |
+
+```bash
 jupyter notebook day06/day06_pm_student_visualization.ipynb
 ```
 
 ---
 
-## ⚠️ 数据说明
+### Day07 · Flask Web 系统 v1
+
+**运行**：
+```bash
+cd day07
+pip install -r requirements.txt
+python app.py
+# 访问 http://127.0.0.1:5000
+# 登录：student / day07
+```
+
+**功能清单**：
+
+| # | 功能 | 路由 |
+|:--:|------|------|
+| 1 | 登录/登出（Session + 装饰器） | `/login` `/logout` |
+| 2 | 数据看板（指标卡 + 图表 + 品类筛选） | `/dashboard` |
+| 3 | 动态图表（品类高亮） | `/chart/category_bar` |
+| 4 | 智能问答（规则 + LLM 降级） | `/assistant` `/api/ask` |
+| 5 | 生命周期详情页 | `/segments` |
+| 6 | 教师管理页（角色权限） | `/admin` |
+
+---
+
+### Day08 · Flask 项目升级 v2
+
+**运行**：
+```bash
+cd day08
+pip install -r requirements.txt
+python validate_day08_environment.py   # 环境检查
+python app.py                           # 访问 http://127.0.0.1:5500
+pytest tests/ -v                        # 运行测试
+```
+
+**v2 新增 / 改进**：
+
+| # | 内容 | 说明 |
+|:--:|------|------|
+| 1 | `/health` | 健康检查端点（无需登录） |
+| 2 | `/api/metrics` | 指标 JSON 接口（`{"ok":true,"metrics":[...]}`） |
+| 3 | `/api/categories?category=X` | 品类筛选 JSON 接口（查询参数） |
+| 4 | 统一错误响应 | 400/404/500 返回 JSON 结构 |
+| 5 | API 测试 | `tests/test_api.py`（6 条用例，覆盖 health/metrics/categories/404） |
+| 6 | 验证脚本 | `validate_day08_environment.py` + `validate_day08_submission.py` |
+
+**API 接口一览**：
+
+| 方法 | 路由 | 认证 | 说明 |
+|------|------|:---:|------|
+| GET | `/health` | — | 健康检查 |
+| GET/POST | `/login` | — | 登录（student/day07） |
+| GET | `/logout` | — | 退出 |
+| GET | `/dashboard` | ✅ | 数据看板（?category= 筛选） |
+| GET | `/assistant` | ✅ | 智能问答页 |
+| POST | `/api/ask` | ✅ | 问答接口 |
+| GET | `/api/metrics` | ✅ | 指标 JSON |
+| GET | `/api/categories` | ✅ | 品类 JSON（?category= 筛选） |
+
+---
+
+## 环境配置
+
+```bash
+# 创建虚拟环境
+python -m venv .venv
+source .venv/bin/activate   # Linux / macOS
+.venv\Scripts\activate      # Windows
+
+# 通用依赖（Day03—Day06）
+pip install pandas numpy matplotlib openpyxl jupyter
+
+# Flask 依赖（Day07 / Day08）
+pip install flask pandas matplotlib
+pip install pytest           # Day08 测试
+pip install openai           # Day07 LLM 集成（可选）
+```
+
+---
+
+## 数据说明
 
 | 属性 | 说明 |
 |------|------|
-| 📊 数据来源 | 电商平台用户行为横截面快照 |
-| 👥 样本量 | 5,630 名独立用户 |
-| 🚫 无订单金额 | 无法计算 GMV / 客单价 |
-| 🚫 无订单日期 | 无法做时序趋势分析 |
-| ⚠️ 注意 | `CashbackAmount` = 返现金额 ≠ 消费金额 |
-| ⚠️ 注意 | 分析结果为**关联关系**，非因果关系 |
-| ⚠️ 注意 | 横截面数据存在**幸存者偏差**风险 |
+| 数据来源 | 电商平台用户行为横截面快照 + 淘宝商品抽样 |
+| 用户样本量 | 5,630 名独立用户（Day04—Day08） |
+| 商品样本量 | 25,000 条商品（Day03） |
+| 无订单金额 | 无法计算 GMV / 客单价 |
+| 无订单日期 | 无法做时序趋势分析 |
+| `CashbackAmount` | 返现金额 ≠ 消费金额 |
+| `商品价格` | 标价 ≠ 实际成交金额 |
+| 分析性质 | 关联关系，非因果关系 |
+| 数据局限 | 横截面数据，存在幸存者偏差风险 |
 
 ---
 
 <p align="center">
-  <br>
   <sub>Made with ❤️ for 东软实训 · MUC 24012465</sub>
 </p>
