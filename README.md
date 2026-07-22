@@ -65,6 +65,13 @@ muc-commerce-3-24012465/
 │   ├── validate_day08_*.py    环境检查 & 提交检查脚本
 │   └── data/                  3 个分析 CSV
 │
+├── day09/                    机器学习数据准备
+│   ├── notebooks/              Notebook
+│   ├── data/                   清洗后用户数据
+│   ├── output/                 4 份 ML 准备输出
+│   ├── requirements.txt
+│   └── validate_day09_*.py    环境 & 提交检查
+│
 ├── .gitignore
 └── README.md
 ```
@@ -81,6 +88,7 @@ muc-commerce-3-24012465/
 | Day06 | 数据可视化 | Matplotlib, Pandas | 4 独立图 + 综合图 + 图表清单 | ✅ |
 | Day07 | Flask Web v1 | Flask, Jinja2 | 登录/Auth/看板/问答/图表/权限 | ✅ |
 | Day08 | Flask 升级 v2 | Flask, pytest | REST API + 测试 + 错误处理 | ✅ |
+| Day09 | ML 数据准备 | Scikit-learn, Pandas | 特征工程 + 流水线 + Baseline | ✅ |
 
 ---
 
@@ -235,6 +243,38 @@ pytest tests/ -v                        # 运行测试
 
 ---
 
+### Day09 · 机器学习数据准备
+
+**目标**：将清洗后的用户数据转换为第 10 天可直接训练的模型矩阵，理解特征/标签/流水线/最低参照线。
+
+**技能点**：
+- 区分特征（X）、标签（y）、标识符（ID）
+- `train_test_split` 分层划分（stratify）训练集/测试集
+- ColumnTransformer + Pipeline 预处理流水线
+- 数值处理：中位数填充 + StandardScaler
+- 类别处理：众数填充 + OneHotEncoder
+- `DummyClassifier` 最低参照线
+
+**输出**：
+
+| 文件 | 内容 |
+|------|------|
+| `feature_schema.csv` | 22 字段的角色/类型/处理方案 |
+| `split_summary.csv` | 训练集 4,504 + 测试集 1,126（流失率 ≈16.8%） |
+| `model_matrix_preview.csv` | 36 列预处理矩阵预览（20 行） |
+| `baseline_metrics.csv` | 准确率 83.1%，流失召回率 0%（永远不会预测流失） |
+
+**关键认知**：
+- 特征 = 题目，标签 = 答案，训练集 = 学习资料，测试集 = 考题
+- 最低参照线准确率 83% 但召回率是 0%——因为它永远猜"不流失"
+- 83% 的"高准确率"只是数据不均衡的假象
+
+```bash
+jupyter notebook day09/notebooks/day09_ml_preparation_student.ipynb
+```
+
+---
+
 ## 环境配置
 
 ```bash
@@ -245,6 +285,9 @@ source .venv/bin/activate   # Linux / macOS
 
 # 通用依赖（Day03—Day06）
 pip install pandas numpy matplotlib openpyxl jupyter
+
+# ML 依赖（Day09）
+pip install scikit-learn
 
 # Flask 依赖（Day07 / Day08）
 pip install flask pandas matplotlib
@@ -259,7 +302,7 @@ pip install openai           # Day07 LLM 集成（可选）
 | 属性 | 说明 |
 |------|------|
 | 数据来源 | 电商平台用户行为横截面快照 + 淘宝商品抽样 |
-| 用户样本量 | 5,630 名独立用户（Day04—Day08） |
+| 用户样本量 | 5,630 名独立用户（Day04—Day09） |
 | 商品样本量 | 25,000 条商品（Day03） |
 | 无订单金额 | 无法计算 GMV / 客单价 |
 | 无订单日期 | 无法做时序趋势分析 |
