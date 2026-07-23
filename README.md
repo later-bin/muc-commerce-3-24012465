@@ -72,6 +72,13 @@ muc-commerce-3-24012465/
 │   ├── requirements.txt
 │   └── validate_day09_*.py    环境 & 提交检查
 │
+├── day10/                    模型比较与选择
+│   ├── notebooks/              Notebook
+│   ├── data/                   清洗后用户数据
+│   ├── output/                 9 份输出（模型对比/特征重要性/预测/模型文件）
+│   ├── requirements.txt
+│   └── validate_day10_*.py    环境 & 提交检查
+│
 ├── .gitignore
 └── README.md
 ```
@@ -89,6 +96,7 @@ muc-commerce-3-24012465/
 | Day07 | Flask Web v1 | Flask, Jinja2 | 登录/Auth/看板/问答/图表/权限 | ✅ |
 | Day08 | Flask 升级 v2 | Flask, pytest | REST API + 测试 + 错误处理 | ✅ |
 | Day09 | ML 数据准备 | Scikit-learn, Pandas | 特征工程 + 流水线 + Baseline | ✅ |
+| Day10 | 模型比较选择 | Scikit-learn, Pandas | 3 模型对比 + 特征重要性 + 预测 | ✅ |
 
 ---
 
@@ -271,6 +279,61 @@ pytest tests/ -v                        # 运行测试
 
 ```bash
 jupyter notebook day09/notebooks/day09_ml_preparation_student.ipynb
+```
+
+---
+
+### Day10 · 模型比较与选择
+
+**目标**：训练并公平比较 3 个模型（逻辑回归、决策树、随机森林），选择最优模型预测高风险流失用户。
+
+**技能点**：
+- 在相同训练集/测试集上训练 Logistic Regression、Decision Tree、Random Forest
+- 多指标比较：Accuracy、Precision、Churn Recall、混淆矩阵
+- 特征重要性分析（Random Forest `feature_importances_`）
+- 模型选择依据：召回率优先（尽量找出流失用户）同时控制误报
+- `joblib` 保存/加载最终模型
+- 生成高风险用户筛查名单
+
+**模型对比结果**：
+
+| 模型 | 准确率 | 精确率 | 流失召回率 | 预测流失人数 | TN | FP | FN | TP |
+|------|:---:|:---:|:---:|:---:|:--:|:--:|:--:|:--:|
+| Baseline | 83.1% | — | 0.0% | 0 | 936 | 0 | 190 | 0 |
+| Logistic Regression | 80.3% | 45.4% | 82.6% | 346 | 747 | 189 | 33 | 157 |
+| Decision Tree | 77.7% | 42.1% | 85.3% | 385 | 713 | 223 | 28 | 162 |
+| **Random Forest** ⭐ | **87.3%** | **58.4%** | **85.8%** | **279** | **820** | **116** | **27** | **163** |
+
+**Top 5 重要特征**：
+
+| 特征 | 重要性 |
+|------|:---:|
+| Tenure（使用月数） | 28.8% |
+| Complain（投诉） | 9.5% |
+| TenureGroup_新用户 | 7.4% |
+| CashbackAmount（返现） | 6.7% |
+| PreferedOrderCat_Mobile Phone | 4.7% |
+
+**输出**：
+
+| 文件 | 说明 |
+|------|------|
+| `model_comparison.csv` | 4 模型 × 8 指标对比 |
+| `confusion_matrix_summary.csv` | 混淆矩阵（TN/FP/FN/TP） |
+| `feature_importance.csv` | Top 36 特征重要性排序 |
+| `customer_churn_predictions.csv` | 1,126 测试集用户的流失概率 |
+| `high_risk_customers.csv` | 预测概率 ≥ 0.5 的高风险用户 |
+| `selected_model.joblib` | 最终选定的随机森林模型文件 |
+| `model_metadata.json` | 模型元信息 |
+| `model_selection_note.txt` | 模型选择理由 |
+| `reflection.txt` | 复盘总结 |
+
+**选择理由**：随机森林准确率最高（87.3%），流失召回率最高（85.8%），误报最少（FP=116）。多棵树投票机制使预测稳定可靠。
+
+**业务应用**：按流失概率对用户排序，优先关注概率最高的客户，帮助运营团队将有限资源投入最可能流失的用户。预测结果作为筛查依据，不替代业务核实。
+
+```bash
+jupyter notebook day10/notebooks/day10_model_comparison_student.ipynb
 ```
 
 ---
